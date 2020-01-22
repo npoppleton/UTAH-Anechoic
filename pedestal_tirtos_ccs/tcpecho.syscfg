@@ -1,0 +1,75 @@
+// These arguments were used when this file was generated. They will be automatically applied on subsequent loads 
+// via the GUI or CLI invocations. Run CLI with '--help' for additional information on how to override these arguments.
+// @cliArgs --board "/ti/boards/MSP_EXP432E401Y" --product "simplelink_msp432e4_sdk@3.30.00.22"
+// @versions {"data":"2019083011","timestamp":"2019083011","tool":"1.2.952","templates":"2019083011"}
+
+var RTOS = scripting.addModule("/ti/drivers/RTOS");
+var Display = scripting.addModule("/ti/display/Display");
+var Display1 = Display.addInstance();
+var SlNet = scripting.addModule("/ti/net/SlNet");
+var SlNet1 = SlNet.addInstance();
+var General = scripting.addModule("/ti/ndk/General");
+// Name
+RTOS.timer0.resource.$name = "MyTimer1";
+// Name - The C/C++ identifier used in applications as the index parameter passed to Display runtime APIs
+Display1.$name = "CONFIG_Display_0";
+// Use Hardware - Select the hardware to use, or 'None' to use available header pins
+Display1.$hardware = system.deviceData.board.components.XDS110UART;
+var Board = scripting.addModule("/ti/drivers/Board");
+var DriverLib = scripting.addModule("/ti/devices/DriverLib");
+// Name - The C/C++ identifier used in applications as the index parameter passed to UART runtime APIs
+Display1.uart.$name = "CONFIG_UART_0";
+var Power = scripting.addModule("/ti/drivers/Power");
+// Name
+Display1.uart.uart.$name = "MyUART1";
+// Name
+SlNet1.$name = "CONFIG_SLNET_0";
+// ID - SLNETIF_ID_? value
+SlNet1.id = 2;
+// Enable Secure Sockets - Enable secure sockets
+SlNet1.enableSecureSocks = false;
+// Stack Thread Stack Size - Stack size, in bytes, of the generated NDK task ndkStackThread()
+General.ndkThreadStkSize = 2048;
+// Low Priority Tasks Default Stack Size - Set the default stack size, in bytes, for low priority NDK tasks.
+General.lowPriTaskDefStkSize = 2048;
+// Normal Priority Tasks Default Stack Size - Set the default stack size, in bytes, for normal priority NDK tasks.
+General.normPriTaskDefStkSize = 2048;
+// High Priority Tasks Default Stack Size - Set the default stack size, in bytes, for high priority NDK tasks.
+General.highPriTaskDefStkSize = 2048;
+// Network Open Hook - User defined hook function to run inside the NDK Network Start callback function, networkOpen().
+General.networkOpenHook = "netOpenHook";
+// Network IP Address Hook - User defined hook function to run in the NDK Network IP address callback function, NetworkIPAddr().
+General.networkIPAddrHook = "netIPAddrHook";
+// Service Report Hook - User defined hook function to run in the NDK status report callback function
+General.serviceReportHook = "serviceReportHook";
+// TCP Transmit Buffer Size - Default TCP send buffer size (bytes)
+General.tcpTxBufSize = 1024;
+// TCP Receive Buffer Size (Copy Mode) - Default TCP receive size (bytes)
+General.tcpRxBufSize = 1024;
+// TCP Receive Size Maximum (Non-Copy Mode) - Default maximum TCP receive size (bytes)
+General.tcpRxBufLimit = 2048;
+// UDP Receive Buffer Size
+General.udpRxBufSize = 2048;
+// Local IP Address Configuration
+General.localIPAddrConfig = "Enable Static IP Address";
+// Static IP Address - Enter a valid address for static IP configuration
+General.staticIPAddr = "192.168.50.199";
+// Name
+General.emac.$name = "CONFIG_EMAC_0";
+// Name
+General.emac.emac.$name = "MyETHERNET1";
+var DMA = scripting.addModule("/ti/drivers/DMA");
+// Suggest solution
+RTOS.timer0.resource.$suggestSolution = "Timer0";
+// Suggest solution
+Display1.uart.uart.$suggestSolution = "UART0";
+// Suggest solution
+Display1.uart.uart.txPin.$suggestSolution = "34";
+// Suggest solution
+Display1.uart.uart.rxPin.$suggestSolution = "33";
+// Suggest solution
+General.emac.emac.$suggestSolution = "ETHERNET0";
+// Suggest solution
+General.emac.emac.led0Pin.$suggestSolution = "63";
+// Suggest solution
+General.emac.emac.led1Pin.$suggestSolution = "61";
